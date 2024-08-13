@@ -1,6 +1,7 @@
-const ResultCalc = () => {
+/* eslint-disable react/prop-types */
+const ResultCalc = ({data_calculateInvestment}) => {
     return (
-        <div className="relative overflow-x-auto rounded-lg">
+        <div className="relative overflow-x-auto overflow-y-auto rounded-lg max-h-[450px]">
             <table className="w-full text-sm text-left rtl:text-right text-gray-400">
                 <thead className="text-xs uppercase bg-[#334155]  text-gray-400">
                     <tr>
@@ -22,23 +23,27 @@ const ResultCalc = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="border-b bg-gray-800 border-gray-700">
-                        <th className="px-6 py-4">
-                            1
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                    </tr>
+                    {data_calculateInvestment.map(singleData => {
+                        return (
+                            <tr className="border-b bg-gray-800 border-gray-700" key={singleData.year}>
+                                <th className="px-6 py-4">
+                                    {singleData.year}
+                                </th>
+                                <td className="px-6 py-4">
+                                    {singleData.annualInvestment}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {singleData.interest}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {singleData.interest}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {singleData.valueEndOfYear}
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
